@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import FeedbackItem from "./FeedbackItem";
 import React from "react";
+import FeedbackContext from "../context/FeedbackContext";
 
-function FeedbackList({ feedback, handleDelete }) {
+function FeedbackList() {
+  const {feedback} = useContext(FeedbackContext);
+
   if (!feedback || feedback.lenght === 0) {
     return <p>No feedback yet :( </p>;
   }
@@ -11,7 +15,6 @@ function FeedbackList({ feedback, handleDelete }) {
         <FeedbackItem
           key={item.id}
           item={item}
-          handleDelete={handleDelete}
         />
       ))}
     </div>
